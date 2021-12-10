@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+:root {
+    --bg: #222;
+    --cellBgC: #2D2D2D;
+    --txtColor: #d6d6d6;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    user-select: none;
+    outline: none;
+}
+
+*,*:after,*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:focus,:active {outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+input,button,textarea {
+    font-family: inherit;
+}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner{padding: 0;border: 0;}
+a{text-decoration: none;color: #111;} /*<<<Color*/
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: 400;}
+/*Конец обнуления*/
+
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    min-height: 100vh;
+    background: var(--bg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#area {
+    width: 300px;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    position: relative;
+    transition: 0.5s;
+}
+
+#area.inactive {
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    font-size: 26px;
+    color: var(--txtColor);
+    cursor: pointer;
+    border:2px solid var(--bg);
+    border-radius: 6px;
+    background-color: var(--cellBgC);
+    transition: background 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell:hover {
+    background-color: #383838;
+}
+
+.current-player {
+    color: rgb(155, 155, 155);
+    font-size: 26px;
+    margin-bottom: 10px;
+    
+}
+
+.button {
+    font-family: 'Cabin', sans-serif;
+    background: transparent;
+    color: var(--txtColor);
+    padding: 6.5px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    /* font-weight: 500; */
+    border: 1px solid rgb(38, 158, 58);
+    border-radius: 5px;
+}
+
+.button:hover {
+    animation: glowing 1s ease-in-out infinite;
+}
+
+.button.button--blue:hover {
+    animation-name: blueGlowing;
+}
+.button.button--blue {
+    border: 1px solid rgb(38, 116, 158);
+}
+
+@keyframes blueGlowing {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(13, 121, 179, 0.296);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(14, 130, 192, 0.96);
+    }
+}
+
+@keyframes glowing {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(13, 179, 49, 0.296);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(13, 179, 49, 0.96);
+    }
+}
+
+.show-statistic {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    top: 0;
+    transform: translateX(120%);
+    height: 50px;
+    width: 200px;
+    color: var(--txtColor);
+    background-color: var(--cellBgC);
+    border: 1px solid rgb(32, 125, 148);
+    border-radius: 5px;
+}
+
+.show-statistic.active {
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    50% {
+        transform: translateX(-15%);
+    }
+    80% {
+        transform: translateX(10%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
